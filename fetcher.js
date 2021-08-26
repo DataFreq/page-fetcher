@@ -5,7 +5,7 @@ const regex = /http(s):\/\/www\./i;
 const url = process.argv.slice(2).filter(input => input.match(regex)).toString();
 const localPath = process.argv.slice(2).filter(input => !input.match(regex)).toString();
 
-print = (path) => {
+const print = (path) => {
   fs.stat(path, (err, stats) => {
     if (err) {
       console.log(err);
@@ -14,7 +14,7 @@ print = (path) => {
   });
 };
 
-writeToDisk = (content, path) => {
+const writeToDisk = (content, path) => {
   fs.writeFile(path, content, (err)=> {
     if (err) {
       console.log(err);
@@ -23,7 +23,7 @@ writeToDisk = (content, path) => {
   });
 };
 
-fetchData = (fetchURL, path) => {
+const fetchData = (fetchURL, path) => {
   request(fetchURL, (error, res, body) => {
     if (error) {
       console.log(error);
